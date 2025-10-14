@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7天英语+高数试学课 | 零门槛入门，轻松掌握核心基础</title>
+  <!-- 外部资源 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind 配置 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#2563EB', // 信任蓝（主色调）
+            secondary: '#F97316', // 活力橙（行动引导色）
+            success: '#10B981', // 成功绿（进度/收获）
+            light: '#F8FAFC', // 浅背景
+            dark: '#1E293B' // 深文字
+          },
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+          },
+          boxShadow: {
+            'promo': '0 10px 25px -5px rgba(37, 99, 235, 0.15)', // 宣传卡片阴影
+            'btn': '0 4px 14px 0 rgba(249, 115, 22, 0.39)', // 按钮阴影
+          }
+        },
+      }
+    }
+  </script>
+  
+  <!-- 自定义工具类 -->
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .hover-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .hover-lift:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.2);
+      }
+      .day-tag {
+        @apply inline-block px-3 py-1 rounded-full text-xs font-semibold;
+      }
+      .feature-icon {
+        @apply w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-4;
+      }
+    }
+  </style>
+</head>
+
+<body class="font-inter bg-light text-dark antialiased">
+  <!-- 导航栏（固定顶部，滚动时变化） -->
+  <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-transparent">
+    <div class="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
+      <a href="#" class="flex items-center space-x-2">
+        <div class="w-20 h-20 rounded-lg bg-red flex items-center justify-center overflow-hidden">
+           <img src="C:\Users\Administrator\Desktop\yanshuo\研硕2.png" alt="研硕教育 YANSHUO EDUCATION" class="w-full h-full object-cover">
+        </div>
+        <span class="text-xl font-bold text-white text-shadow">7天试学课</span>
+      </a>
+      
+      <!-- 桌面端导航 -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="#overview" class="text-white hover:text-secondary transition-colors font-medium">课程总览</a>
+        <a href="#daily-plan" class="text-white hover:text-secondary transition-colors font-medium">每日亮点</a>
+        <a href="#advantages" class="text-white hover:text-secondary transition-colors font-medium">为什么选我们</a>
+        <a href="#testimonials" class="text-white hover:text-secondary transition-colors font-medium">学员反馈</a>
+      </div>
+      
+      <!-- 报名按钮（始终显示） -->
+      <a href="#enroll" class="bg-secondary hover:bg-secondary/90 text-white font-semibold px-6 py-2.5 rounded-full shadow-btn transition-all duration-300 flex items-center">
+        <i class="fa fa-rocket mr-2"></i> 立即报名
+      </a>
+      
+      <!-- 移动端菜单按钮 -->
+      <button id="menuBtn" class="md:hidden text-white text-2xl">
+        <i class="fa fa-bars"></i>
+      </button>
+    </div>
+    
+    <!-- 移动端导航菜单（默认隐藏） -->
+    <div id="mobileMenu" class="md:hidden bg-white shadow-lg absolute w-full left-0 top-full transform -translate-y-full opacity-0 transition-all duration-300 pointer-events-none">
+      <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+        <a href="#overview" class="text-dark hover:text-primary font-medium py-2 border-b border-gray-100">课程总览</a>
+        <a href="#daily-plan" class="text-dark hover:text-primary font-medium py-2 border-b border-gray-100">每日亮点</a>
+        <a href="#advantages" class="text-dark hover:text-primary font-medium py-2 border-b border-gray-100">为什么选我们</a>
+        <a href="#testimonials" class="text-dark hover:text-primary font-medium py-2">学员反馈</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 头部Banner（核心卖点+视觉冲击） -->
+  <header class="pt-24 md:pt-32 pb-16 md:pb-24 bg-gradient-to-r from-primary to-primary/80 text-white">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="flex flex-col md:flex-row items-center gap-10">
+        <!-- 左侧文字（核心卖点） -->
+        <div class="md:w-1/2 space-y-6">
+          <span class="inline-block px-4 py-1.5 rounded-full bg-white/20 text-white text-sm font-medium mb-2">
+            零基础友好 · 7天速成 · 免费试学
+          </span>
+          <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight text-shadow">
+            7天攻克<br>英语基础+高数入门
+          </h1>
+          <p class="text-[clamp(1rem,2vw,1.25rem)] text-white/90 max-w-lg">
+            每天30-150分钟，从英语音标到语法框架，从实数概念到方程求解，科学规划+劳逸结合，轻松入门两大核心学科！
+          </p>
+          
+          <!-- 数据亮点（增强信任） -->
+          <div class="grid grid-cols-3 gap-4 mt-8">
+            <div class="text-center">
+              <p class="text-3xl font-bold">7天</p>
+              <p class="text-white/80 text-sm">短期高效</p>
+            </div>
+            <div class="text-center">
+              <p class="text-3xl font-bold">500+</p>
+              <p class="text-white/80 text-sm">分钟干货</p>
+            </div>
+            <div class="text-center">
+              <p class="text-3xl font-bold">0门槛</p>
+              <p class="text-white/80 text-sm">新手友好</p>
+            </div>
+          </div>
+          
+          <!-- 行动按钮（双按钮引导） -->
+          <div class="flex flex-col sm:flex-row gap-4 mt-6">
+            <a href="#enroll" class="bg-secondary hover:bg-secondary/90 text-white font-bold px-8 py-3.5 rounded-full shadow-btn transition-all duration-300 text-center">
+              抢占试学名额 <i class="fa fa-arrow-right ml-2"></i>
+            </a>
+            <a href="#daily-plan" class="bg-white/10 hover:bg-white/20 text-white font-medium px-8 py-3.5 rounded-full transition-all duration-300 text-center backdrop-blur-sm">
+              查看每日计划
+            </a>
+          </div>
+        </div>
+        
+        <!-- 右侧图片（视觉冲击） -->
+        <div class="md:w-1/2 relative">
+          <div class="relative z-10 bg-white rounded-2xl shadow-promo p-6 hover-lift">
+            <img src="C:\Users\Administrator\Desktop\yanshuo\研硕1.jpg" alt="7天试学课学习场景" class="rounded-xl w-full h-auto">
+            <!-- 悬浮标签 -->
+            <div class="absolute -top-4 -left-4 bg-secondary text-white px-4 py-2 rounded-lg font-semibold shadow-lg">
+              热门试学课
+            </div>
+            <div class="absolute -bottom-4 -right-4 bg-primary text-white px-4 py-2 rounded-lg font-semibold shadow-lg">
+              限时免费
+            </div>
+          </div>
+          <!-- 装饰元素 -->
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-secondary/20 rounded-3xl -z-10 blur-xl"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 核心内容区 -->
+  <main class="py-16 md:py-24">
+    <!-- 1. 课程总览（可视化七天进度） -->
+    <section id="overview" class="container mx-auto px-4 md:px-6 mb-24">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="day-tag bg-primary/10 text-primary">课程总览</span>
+        <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mt-2 mb-4">7天科学规划，劳逸结合不疲劳</h2>
+        <p class="text-gray-600 text-lg">根据学习规律设计“轻松-高强度-缓冲”节奏，避免疲劳式学习，让每一分钟都有收获</p>
+      </div>
+      
+      <!-- 七天进度可视化 -->
+      <div class="bg-white rounded-2xl shadow-promo p-6 md:p-10">
+        <!-- 进度图表 -->
+        <div class="h-80 mb-12">
+          <canvas id="studyOverviewChart"></canvas>
+        </div>
+        
+        <!-- 七天核心收获（卡片式） -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-4 md:gap-6">
+          <!-- Day 1 -->
+          <div class="bg-primary/5 rounded-xl p-4 text-center hover-lift">
+            <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mx-auto mb-3">1</div>
+            <h3 class="font-bold mb-2">入门基础</h3>
+            <p class="text-sm text-gray-600">英语音标+实数概念</p>
+            <p class="text-success font-semibold mt-2">46分钟</p>
+          </div>
+          <!-- Day 2 -->
+          <div class="bg-primary/5 rounded-xl p-4 text-center hover-lift">
+            <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mx-auto mb-3">2</div>
+            <h3 class="font-bold mb-2">发音+计算</h3>
+            <p class="text-sm text-gray-600">发音规则+分数运算</p>
+            <p class="text-secondary font-semibold mt-2">98分钟</p>
+          </div>
+          <!-- Day 3 -->
+          <div class="bg-primary/5 rounded-xl p-4 text-center hover-lift">
+            <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mx-auto mb-3">3</div>
+            <h3 class="font-bold mb-2">缓冲复习</h3>
+            <p class="text-sm text-gray-600">词汇方法+轻量高数</p>
+            <p class="text-success font-semibold mt-2">42分钟</p>
+          </div>
+          <!-- Day 4 -->
+          <div class="bg-primary/5 rounded-xl p-4 text-center hover-lift">
+            <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mx-auto mb-3">4</div>
+            <h3 class="font-bold mb-2">语法+运算</h3>
+            <p class="text-sm text-gray-600">语法入门+指数对数</p>
+            <p class="text-secondary font-semibold mt-2">102分钟</p>
+          </div>
+          <!-- Day 5 -->
+          <div class="bg-primary/5 rounded-xl p-4 text-center hover-lift">
+            <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mx-auto mb-3">5</div>
+            <h3 class="font-bold mb-2">核心突破</h3>
+            <p class="text-sm text-gray-600">句型辨析+因式分解</p>
+            <p class="text-secondary font-semibold mt-2">141分钟</p>
+          </div>
+          <!-- Day 6 -->
+          <div class="bg-primary/5 rounded-xl p-4 text-center hover-lift">
+            <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mx-auto mb-3">6</div>
+            <h3 class="font-bold mb-2">语法收尾</h3>
+            <p class="text-sm text-gray-600">五大句型+专注攻克</p>
+            <p class="text-secondary font-semibold mt-2">97分钟</p>
+          </div>
+          <!-- Day 7 -->
+          <div class="bg-primary/5 rounded-xl p-4 text-center hover-lift">
+            <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white mx-auto mb-3">7</div>
+            <h3 class="font-bold mb-2">复习收尾</h3>
+            <p class="text-sm text-gray-600">高数收尾+难点复习</p>
+            <p class="text-success font-semibold mt-2">29分钟</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 每日亮点（突出“学什么、能收获什么”） -->
+    <section id="daily-plan" class="container mx-auto px-4 md:px-6 mb-24 bg-gradient-to-b from-white to-primary/5 py-16 rounded-3xl shadow-promo">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="day-tag bg-secondary/10 text-secondary">每日亮点</span>
+        <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mt-2 mb-4">每天掌握一个核心能力</h2>
+        <p class="text-gray-600 text-lg">拒绝“大水漫灌”，每天聚焦1-2个核心知识点，学完就能用</p>
+      </div>
+      
+      <!-- 每日计划卡片（纵向排列，突出亮点） -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Day 1 -->
+        <div class="bg-white rounded-2xl shadow-promo p-6 hover-lift">
+          <div class="flex justify-between items-start mb-4">
+            <span class="day-tag bg-success/10 text-success">Day 1</span>
+            <span class="text-sm font-medium text-gray-500">46分钟</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3">轻松入门：打好基础第一步</h3>
+          <div class="space-y-4 mb-6">
+            <div>
+              <h4 class="font-semibold text-primary mb-2 flex items-center">
+                <i class="fa fa-book mr-2"></i> 英语亮点
+              </h4>
+              <p class="text-gray-600 text-sm">掌握26个字母音标+4组易混发音区别，建立正确发音基础</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-primary mb-2 flex items-center">
+                <i class="fa fa-calculator mr-2"></i> 高数亮点
+              </h4>
+              <p class="text-gray-600 text-sm">理解实数概念，为后续运算打下理论基础</p>
+            </div>
+          </div>
+          <div class="bg-success/5 rounded-lg p-3 text-sm text-success font-medium">
+            <i class="fa fa-check-circle mr-1"></i> 开局轻松，易坚持
+          </div>
+        </div>
+        
+        <!-- Day 2 -->
+        <div class="bg-white rounded-2xl shadow-promo p-6 hover-lift">
+          <div class="flex justify-between items-start mb-4">
+            <span class="day-tag bg-secondary/10 text-secondary">Day 2</span>
+            <span class="text-sm font-medium text-gray-500">98分钟</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3">强度提升：攻克核心难点</h3>
+          <div class="space-y-4 mb-6">
+            <div>
+              <h4 class="font-semibold text-primary mb-2 flex items-center">
+                <i class="fa fa-book mr-2"></i> 英语亮点
+              </h4>
+              <p class="text-gray-600 text-sm">掌握“元音+e”“元音+r”“oo”等核心发音规则，告别“中式英语”</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-primary mb-2 flex items-center">
+                <i class="fa fa-calculator mr-2"></i> 高数亮点
+              </h4>
+              <p class="text-gray-600 text-sm">精通分数通分约分，解决后续复杂计算的“拦路虎”</p>
+            </div>
+          </div>
+          <div class="bg-secondary/5 rounded-lg p-3 text-sm text-secondary font-medium">
+            <i class="fa fa-exclamation-circle mr-1"></i> 重点突破日，建议预留整块时间
+          </div>
+        </div>
+        
+        <!-- Day 3 -->
+        <div class="bg-white rounded-2xl shadow-promo p-6 hover-lift">
+          <div class="flex justify-between items-start mb-4">
+            <span class="day-tag bg-success/10 text-success">Day 3</span>
+            <span class="text-sm font-medium text-gray-500">42分钟</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3">缓冲复习：巩固+轻松学</h3>
+          <div class="space-y-4 mb-6">
+            <div>
+              <h4 class="font-semibold text-primary mb-2 flex items-center">
+                <i class="fa fa-book mr-2"></i> 英语亮点
+              </h4>
+              <p class="text-gray-600 text-sm">学习词根词缀+音节划分，掌握科学背单词方法（一）</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-primary mb-2 flex items-center">
+                <i class="fa fa-calculator mr-2"></i> 高数亮点
+              </h4>
+              <p class="text-gray-600 text-sm">快速掌握自然数阶乘+绝对值，任务轻松，适合复习</p>
+            </div>
+          </div>
+          <div class="bg-success/5 rounded-lg p-3 text-sm text-success font-medium">
+            <i class="fa fa-refresh mr-1"></i> 复习缓冲日，巩固前2天内容
+          </div>
+        </div>
+        
+        <!-- Day 4 -->
+        <div class="bg-white rounded-2xl shadow-promo p-6 hover-lift">
+          <div class="flex justify-between items-start mb-4">
+            <span class="day-tag bg-secondary/10 text-secondary">Day 4</span>
+            <span class="text-sm font-medium text-gray-500">102分钟</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3">跨科突破：语法+运算双提升</h3>
+          <div class="space-y-4 mb-6">
+            <div>
+              <h4 class="font-semibold text-primary mb-2 flex items-center">
+                <i class="fa fa-book mr-2"></i> 英语亮点
+              </h4>
+              <p class="text-gray-600 text-sm">完成背单词方法（二），并开启语法模块，理解语法重要性</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-primary mb-2 flex items-center">
+                <i class="fa fa-calculator mr-2"></i> 高数亮点
+              </h4>
+              <p class="text-gray-600 text-sm">掌握指数+对数运算，攻克高数核心运算模块</p>
+            </div>
+          </div>
+          <div class="bg-secondary/5 rounded-lg p-3 text-sm text-secondary font-medium">
+            <i class="fa fa-star mr-1"></i> 本周强度最大日，收获满满
+          </div>
+        </div>
+        
+        <!-- Day 5 -->
+        <div class="bg-white rounded-2xl shadow-promo p-6 hover-lift">
+          <div class="flex justify-between items-start mb-4">
+            <span class="day-tag bg-secondary/10 text-secondary">Day 5</span>
+            <span class="text-sm font-medium text-gray-500">141分钟</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3">核心攻坚：句型+多项式突破</h3>
+          <div class="space-y-4 mb-6">
+            <div>
+              <h4 class="font-semibold text-primary mb-2 flex items-center">
+                <i class="fa fa-book mr-2"></i> 英语亮点
+              </h4>
+              <p class="text-gray-600 text-sm">理解英语句型差异，掌握宾语和补语，建立句子结构思维</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-primary mb-2 flex items-center">
+                <i class="fa fa-calculator mr-2"></i> 高数亮点
+              </h4>
+              <p class="text-gray-600 text-sm">精通一元多项式与因式分解，为方程求解铺路</p>
+            </div>
+          </div>
+          <div class="bg-secondary/5 rounded-lg p-3 text-sm text-secondary font-medium">
+            <i class="fa fa-flag mr-1"></i> 超高强度日，需预留整块时间
+          </div>
+        </div>
+        
+        <!-- Day 6 -->
+        <div class="bg-white rounded-2xl shadow-promo p-6 hover-lift">
+          <div class="flex justify-between items-start mb-4">
+            <span class="day-tag bg-secondary/10 text-secondary">Day 6</span>
+            <span class="text-sm font-medium text-gray-500">97分钟</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3">语法收尾：专注攻克句型</h3>
+          <div class="space-y-4 mb-6">
+            <div>
+              <h4 class="font-semibold text-primary mb-2 flex items-center">
+                <i class="fa fa-book mr-2"></i> 英语亮点
+              </h4>
+              <p class="text-gray-600 text-sm">区分“主谓宾宾”与“主谓宾宾补”，辨析五大基本句型，完成语法模块</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-primary mb-2 flex items-center">
+                <i class="fa fa-calculator mr-2"></i> 高数安排
+              </h4>
+              <p class="text-gray-600 text-sm">纯英语日，高数暂停，专注攻克语法难点</p>
+            </div>
+          </div>
+          <div class="bg-secondary/5 rounded-lg p-3 text-sm text-secondary font-medium">
+            <i class="fa fa-check-square-o mr-1"></i> 语法收尾日，内容连贯易吸收
+          </div>
+        </div>
+        
+        <!-- Day 7 -->
+        <div class="bg-white rounded-2xl shadow-promo p-6 hover-lift md:col-span-2 lg:col-span-1">
+          <div class="flex justify-between items-start mb-4">
+            <span class="day-tag bg-success/10 text-success">Day 7</span>
+            <span class="text-sm font-medium text-gray-500">29分钟</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3">复习收尾：查漏补缺</h3>
+          <div class="space-y-4 mb-6">
+            <div>
+              <h4 class="font-semibold text-primary mb-2 flex items-center">
+                <i class="fa fa-book mr-2"></i> 英语安排
+              </h4>
+              <p class="text-gray-600 text-sm">无新课，建议复习前6天语法、发音、词汇难点</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-primary mb-2 flex items-center">
+                <i class="fa fa-calculator mr-2"></i> 高数亮点
+              </h4>
+              <p class="text-gray-600 text-sm">学习一元二次方程，完成高数入门模块收尾</p>
+            </div>
+          </div>
+          <div class="bg-success/5 rounded-lg p-3 text-sm text-success font-medium">
+            <i class="fa fa-refresh mr-1"></i> 复习日，强烈建议查漏补缺
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 试学课优势（信任背书，打消顾虑） -->
+    <section id="advantages" class="container mx-auto px-4 md:px-6 mb-24">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="day-tag bg-primary/10 text-primary">核心优势</span>
+        <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mt-2 mb-4">为什么选择这款7天试学课？</h2>
+        <p class="text-gray-600 text-lg">3大核心优势，解决“学不会、坚持不下去、没效果”的痛点</p>
+      </div>
+      
+      <!-- 优势卡片 -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- 优势1：科学规划 -->
+        <div class="bg-white rounded-2xl shadow-promo p-8 hover-lift text-center">
+          <div class="feature-icon mx-auto">
+            <i class="fa fa-calendar-check-o text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">科学规划，劳逸结合</h3>
+          <p class="text-gray-600">
+            遵循“轻松-高强度-缓冲”的学习节奏，避免疲劳式学习。每天时长30-150分钟，兼顾效果与可持续性，新手也能轻松坚持。
+          </p>
+        </div>
+        
+        <!-- 优势2：干货密集 -->
+        <div class="bg-white rounded-2xl shadow-promo p-8 hover-lift text-center">
+          <div class="feature-icon mx-auto">
+            <i class="fa fa-lightbulb-o text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">干货密集，学完能用</h3>
+          <p class="text-gray-600">
+            拒绝“水课”，每天聚焦1-2个核心知识点：英语从发音到语法，高数从概念到运算，学完就能应用，快速看到进步。
+          </p>
+        </div>
+        
+        <!-- 优势3：零门槛友好 -->
+        <div class="bg-white rounded-2xl shadow-promo p-8 hover-lift text-center">
+          <div class="feature-icon mx-auto">
+            <i class="fa fa-user-o text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">零门槛友好，新手适配</h3>
+          <p class="text-gray-600">
+            从最基础的音标、实数概念开始，循序渐进，每个知识点都有详细讲解，即使是“英语渣”“数学小白”也能轻松入门。
+          </p>
+        </div>
+      </div>
+      
+      <!-- 额外保障（增强信任） -->
+      <div class="bg-primary/5 rounded-2xl p-8 md:p-10 mt-12">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+          <div class="md:w-2/3">
+            <h3 class="text-2xl font-bold mb-4">报名即享3大福利</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div class="flex items-start">
+                <i class="fa fa-file-text-o text-primary text-xl mt-1 mr-3"></i>
+                <div>
+                  <h4 class="font-semibold mb-1">配套学习资料</h4>
+                  <p class="text-sm text-gray-600">音标表、语法笔记、高数公式手册</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <i class="fa fa-comments-o text-primary text-xl mt-1 mr-3"></i>
+                <div>
+                  <h4 class="font-semibold mb-1">社群答疑</h4>
+                  <p class="text-sm text-gray-600">专业老师+同学互助，解决学习疑问</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <i class="fa fa-certificate text-primary text-xl mt-1 mr-3"></i>
+                <div>
+                  <h4 class="font-semibold mb-1">结业证书</h4>
+                  <p class="text-sm text-gray-600">完成7天学习，领取电子结业证书</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="md:w-1/3">
+            <a href="#enroll" class="block w-full bg-secondary hover:bg-secondary/90 text-white font-bold text-center px-8 py-4 rounded-full shadow-btn transition-all duration-300">
+              立即领取福利 <i class="fa fa-gift ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 学员见证（增强可信度） -->
+    <section id="testimonials" class="container mx-auto px-4 md:px-6 mb-24 bg-gradient-to-r from-primary/5 to-secondary/5 py-16 rounded-3xl">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="day-tag bg-secondary/10 text-secondary">学员反馈</span>
+        <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mt-2 mb-4">他们都通过试学课收获了什么？</h2>
+        <p class="text-gray-600 text-lg">来自真实学员的反馈，看看他们的7天变化</p>
+      </div>
+      
+      <!-- 学员评价卡片 -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- 学员1 -->
+        <div class="bg-white rounded-2xl shadow-promo p-6 hover-lift">
+          <div class="flex items-center mb-4">
+            <img src="https://picsum.photos/seed/user1/60/60" alt="学员头像" class="w-12 h-12 rounded-full object-cover mr-4">
+            <div>
+              <h4 class="font-bold">李同学 | 临沂大学</h4>
+              <div class="flex text-yellow-400 text-sm">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <p class="text-gray-600 italic">
+            “高数一直是我的弱项，通过这7天的学习，对指数对数和多项式有了深入理解，老师的讲解方式很容易理解。”
+          </p>
+        </div>
+        
+        <!-- 学员2 -->
+        <div class="bg-white rounded-2xl shadow-promo p-6 hover-lift">
+          <div class="flex items-center mb-4">
+            <img src="https://picsum.photos/seed/user2/60/60" alt="学员头像" class="w-12 h-12 rounded-full object-cover mr-4">
+            <div>
+              <h4 class="font-bold">张同学 | 山东女子学院</h4>
+              <div class="flex text-yellow-400 text-sm">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+              </div>
+            </div>
+          </div>
+          <p class="text-gray-600 italic">
+            “7天试学课让我对专升本有了清晰的认识，老师讲解很细致，时间安排也很合理，不会影响到正常的课程学习。”
+          </p>
+        </div>
+        
+        <!-- 学员3 -->
+        <div class="bg-white rounded-2xl shadow-promo p-6 hover-lift">
+          <div class="flex items-center mb-4">
+            <img src="https://picsum.photos/seed/user3/60/60" alt="学员头像" class="w-12 h-12 rounded-full object-cover mr-4">
+            <div>
+              <h4 class="font-bold">王同学 | 山东管理学院</h4>
+              <div class="flex text-yellow-400 text-sm">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <p class="text-gray-600 italic">
+            “7天时间虽然不长，但是学到了很多实用的学习方法，特别是语法部分的讲解，让我对英语句子结构有了全新的认识。”
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. 报名区域（强烈行动引导） -->
+    <section id="enroll" class="container mx-auto px-4 md:px-6">
+      <div class="bg-gradient-to-r from-primary to-primary/90 rounded-3xl shadow-promo overflow-hidden">
+        <div class="flex flex-col md:flex-row">
+          <!-- 左侧报名信息 -->
+          <div class="md:w-1/2 p-8 md:p-12 text-white">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-white/20 text-white text-sm font-medium mb-4">
+              限时报名
+            </span>
+            <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4">
+              立即抢占7天试学名额
+            </h2>
+            <p class="text-white/90 mb-8 text-lg">
+              仅限200个免费试学名额，报满即止！<br>
+              报名后立即获取：配套资料+社群入口+学习计划
+            </p>
+            
+            <!-- 倒计时（增加紧迫感） -->
+            <div class="mb-8">
+              <h4 class="font-semibold mb-4">名额剩余：<span class="text-secondary text-2xl">37</span> 个</h4>
+              <div class="flex space-x-4">
+                <div class="bg-white/10 rounded-lg px-4 py-3 text-center">
+                  <p class="text-2xl font-bold" id="days">02</p>
+                  <p class="text-sm text-white/80">天</p>
+                </div>
+                <div class="bg-white/10 rounded-lg px-4 py-3 text-center">
+                  <p class="text-2xl font-bold" id="hours">18</p>
+                  <p class="text-sm text-white/80">时</p>
+                </div>
+                <div class="bg-white/10 rounded-lg px-4 py-3 text-center">
+                  <p class="text-2xl font-bold" id="minutes">45</p>
+                  <p class="text-sm text-white/80">分</p>
+                </div>
+                <div class="bg-white/10 rounded-lg px-4 py-3 text-center">
+                  <p class="text-2xl font-bold" id="seconds">33</p>
+                  <p class="text-sm text-white/80">秒</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 报名表单 -->
+            <form class="space-y-4">
+              <div>
+                <label for="name" class="block text-sm font-medium mb-1">姓名</label>
+                <input type="text" id="name" placeholder="请输入您的姓名" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-secondary">
+              </div>
+              <div>
+                <label for="phone" class="block text-sm font-medium mb-1">手机号</label>
+                <input type="tel" id="phone" placeholder="请输入您的手机号" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-secondary">
+              </div>
+              <div>
+                <label for="role" class="block text-sm font-medium mb-1">您的身份</label>
+                <select id="role" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-secondary">
+                  <option value="" class="text-dark">请选择身份</option>
+                  <option value="student" class="text-dark">高中生/大学生</option>
+                  <option value="worker" class="text-dark">职场人士</option>
+                  <option value="other" class="text-dark">其他</option>
+                </select>
+              </div>
+              <button type="submit" class="w-full bg-secondary hover:bg-secondary/90 text-white font-bold py-3.5 rounded-lg shadow-btn transition-all duration-300 text-center">
+                提交报名 <i class="fa fa-check ml-2"></i>
+              </button>
+              <p class="text-xs text-white/60 text-center mt-4">
+                点击提交即表示同意《用户服务协议》和《隐私政策》
+              </p>
+            </form>
+          </div>
+          
+          <!-- 右侧图片（视觉辅助） -->
+          <div class="md:w-1/2 hidden md:block relative">
+            <img src="https://picsum.photos/seed/study2/800/1000" alt="学习场景" class="w-full h-full object-cover">
+            <!-- 装饰元素 -->
+            <div class="absolute inset-0 bg-gradient-to-l from-primary/80 to-transparent"></div>
+            <!-- 悬浮卡片 -->
+            <div class="absolute bottom-8 left-8 bg-white rounded-xl p-6 shadow-lg max-w-xs hover-lift">
+              <div class="flex items-center mb-3">
+                <i class="fa fa-check-circle text-success text-2xl mr-3"></i>
+                <h4 class="font-bold">报名后您将获得</h4>
+              </div>
+              <ul class="space-y-2 text-gray-600 text-sm">
+                <li class="flex items-start">
+                  <i class="fa fa-angle-right text-primary mt-1 mr-2"></i>
+                  <span>7天完整学习计划+配套资料包</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fa fa-angle-right text-primary mt-1 mr-2"></i>
+                  <span>专业老师社群答疑（工作日8:00-17:00）</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fa fa-angle-right text-primary mt-1 mr-2"></i>
+                  <span>学习进度跟踪+个性化建议</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fa fa-angle-right text-primary mt-1 mr-2"></i>
+                  <span>完成学习后领取结业证书</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 常见问题（FAQ） -->
+  <section class="container mx-auto px-4 md:px-6 py-16 md:py-24 bg-white rounded-3xl shadow-promo mb-24">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="day-tag bg-primary/10 text-primary">常见问题</span>
+      <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mt-2 mb-4">你可能关心的问题</h2>
+      <p class="text-gray-600 text-lg">以下是学员常问的问题，如有其他疑问可联系招生老师</p>
+    </div>
+    
+    <div class="max-w-3xl mx-auto space-y-4">
+      <!-- FAQ 1 -->
+      <div class="border border-gray-200 rounded-xl overflow-hidden">
+        <button class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold">
+          <span>试学课需要什么基础？完全没接触过英语/高数可以学吗？</span>
+          <i class="fa fa-chevron-down text-primary transition-transform duration-300"></i>
+        </button>
+        <div class="faq-content px-6 pb-6 text-gray-600 hidden">
+          完全可以！试学课专为零基础设计，从最基础的26个字母音标、实数概念开始，循序渐进讲解，每个知识点都有详细说明，即使是“英语渣”“数学小白”也能轻松跟上。
+        </div>
+      </div>
+      
+      <!-- FAQ 2 -->
+      <div class="border border-gray-200 rounded-xl overflow-hidden">
+        <button class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold">
+          <span>每天需要花多长时间学习？可以灵活安排时间吗？</span>
+          <i class="fa fa-chevron-down text-primary transition-transform duration-300"></i>
+        </button>
+        <div class="faq-content px-6 pb-6 text-gray-600 hidden">
+          每天学习时长30-150分钟（根据当天内容调整），时间可以灵活安排。课程支持永久回放，可根据自己的作息拆分学习，比如早上学30分钟英语，晚上学30分钟高数。
+        </div>
+      </div>
+      
+      <!-- FAQ 3 -->
+      <div class="border border-gray-200 rounded-xl overflow-hidden">
+        <button class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold">
+          <span>试学课有考核吗？没完成当天学习会影响后续内容吗？</span>
+          <i class="fa fa-chevron-down text-primary transition-transform duration-300"></i>
+        </button>
+        <div class="faq-content px-6 pb-6 text-gray-600 hidden">
+          试学课没有强制考核，以“轻松入门、培养兴趣”为主。如果没完成当天学习，可第二天补学，课程内容是循序渐进的，建议尽量跟上节奏，如有疑问可在社群提问。
+        </div>
+      </div>
+      
+      <!-- FAQ 4 -->
+      <div class="border border-gray-200 rounded-xl overflow-hidden">
+        <button class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold">
+          <span>试学课结束后，想继续学习有什么推荐？</span>
+          <i class="fa fa-chevron-down text-primary transition-transform duration-300"></i>
+        </button>
+        <div class="faq-content px-6 pb-6 text-gray-600 hidden">
+          试学课结束后，我们有针对英语和高数的系统课程（从基础到进阶），试学学员可享受专属优惠。同时会根据您的学习情况，推荐适合的学习路径，帮助您持续提升。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="bg-dark text-white py-16">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <!-- 品牌信息 -->
+        <div class="md:col-span-1">
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
+              <i class="fa fa-graduation-cap text-white text-xl"></i>
+            </div>
+            <span class="text-xl font-bold">7天试学课</span>
+          </div>
+          <p class="text-gray-400 mb-6">
+            专注英语+高数入门教学，让零基础学员轻松掌握核心知识。
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fa fa-weixin text-xl"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fa fa-weibo text-xl"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fa fa-qq text-xl"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- 快速链接 -->
+        <div>
+          <h4 class="text-lg font-bold mb-4">快速链接</h4>
+          <ul class="space-y-2">
+            <li><a href="#overview" class="text-gray-400 hover:text-white transition-colors">课程总览</a></li>
+            <li><a href="#daily-plan" class="text-gray-400 hover:text-white transition-colors">每日亮点</a></li>
+            <li><a href="#advantages" class="text-gray-400 hover:text-white transition-colors">核心优势</a></li>
+            <li><a href="#testimonials" class="text-gray-400 hover:text-white transition-colors">学员反馈</a></li>
+            <li><a href="#enroll" class="text-gray-400 hover:text-white transition-colors">立即报名</a></li>
+          </ul>
+        </div>
+        
+        <!-- 帮助中心 -->
+        <div>
+          <h4 class="text-lg font-bold mb-4">帮助中心</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">常见问题</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">学习指南</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">资料下载</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">社群规则</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">联系我们</a></li>
+          </ul>
+        </div>
+        
+        <!-- 联系方式 -->
+        <div>
+          <h4 class="text-lg font-bold mb-4">联系我们</h4>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <i class="fa fa-phone text-primary mt-1 mr-3"></i>
+              <span class="text-gray-400">400-053-1815</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-clock-o text-primary mt-1 mr-3"></i>
+              <span class="text-gray-400">工作日 8:00-17:00</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fa fa-map-marker text-primary mt-1 mr-3"></i>
+              <span class="text-gray-400">山东省济南市槐荫区善仁大厦二号楼</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- 版权信息 -->
+      <div class="pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+        <p>© 2025 7天试学课 版权所有 | 京ICP备XXXXXXXX号-1</p>
+        <p class="mt-2">
+          <a href="#" class="hover:text-gray-400 transition-colors">用户服务协议</a> | 
+          <a href="#" class="hover:text-gray-400 transition-colors">隐私政策</a> | 
+          <a href="#" class="hover:text-gray-400 transition-colors">免责声明</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // 1. 导航栏滚动效果
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('bg-white', 'shadow-md');
+        navbar.classList.remove('bg-transparent');
+        // 切换文字颜色
+        const navLinks = navbar.querySelectorAll('a:not(.bg-secondary)');
+        navLinks.forEach(link => {
+          link.classList.remove('text-white');
+          link.classList.add('text-dark');
+        });
+        // 切换Logo文字颜色
+        const logoText = navbar.querySelector('.text-shadow');
+        if (logoText) {
+          logoText.classList.remove('text-white', 'text-shadow');
+          logoText.classList.add('text-dark');
+        }
+      } else {
+        navbar.classList.remove('bg-white', 'shadow-md');
+        navbar.classList.add('bg-transparent');
+        // 恢复文字颜色
+        const navLinks = navbar.querySelectorAll('a:not(.bg-secondary)');
+        navLinks.forEach(link => {
+          link.classList.add('text-white');
+          link.classList.remove('text-dark');
+        });
+        // 恢复Logo文字颜色
+        const logoText = navbar.querySelector('.font-bold');
+        if (logoText) {
+          logoText.classList.add('text-white', 'text-shadow');
+          logoText.classList.remove('text-dark');
+        }
+      }
+    });
+
+    // 2. 移动端菜单
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let menuOpen = false;
+    
+    menuBtn.addEventListener('click', () => {
+      if (!menuOpen) {
+        mobileMenu.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
+        mobileMenu.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
+        menuBtn.innerHTML = '<i class="fa fa-times"></i>';
+        menuOpen = true;
+      } else {
+        mobileMenu.classList.add('-translate-y-full', 'opacity-0', 'pointer-events-none');
+        mobileMenu.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+        menuBtn.innerHTML = '<i class="fa fa-bars"></i>';
+        menuOpen = false;
+      }
+    });
+
+    // 3. 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        // 关闭移动端菜单
+        if (menuOpen) {
+          mobileMenu.classList.add('-translate-y-full', 'opacity-0', 'pointer-events-none');
+          mobileMenu.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+          menuBtn.innerHTML = '<i class="fa fa-bars"></i>';
+          menuOpen = false;
+        }
+        // 滚动到目标位置
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80, // 导航栏高度偏移
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // 4. 课程总览图表
+    const initOverviewChart = () => {
+      const ctx = document.getElementById('studyOverviewChart').getContext('2d');
+      const days = ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'];
+      const englishData = [34, 34, 31, 52, 102, 97, 0];
+      const mathData = [12, 64, 11, 50, 39, 0, 29];
+      
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: days,
+          datasets: [
+            {
+              label: '英语学习时长（分钟）',
+              data: englishData,
+              backgroundColor: 'rgba(37, 99, 235, 0.7)',
+              borderColor: 'rgba(37, 99, 235, 1)',
+              borderWidth: 1,
+              borderRadius: 6
+            },
+            {
+              label: '高数学习时长（分钟）',
+              data: mathData,
+              backgroundColor: 'rgba(249, 115, 22, 0.7)',
+              borderColor: 'rgba(249, 115, 22, 1)',
+              borderWidth: 1,
+              borderRadius: 6
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'top',
+              labels: {
+                font: {
+                  size: 12,
+                  family: 'Inter'
+                }
+              }
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return `${context.dataset.label}: ${context.raw} 分钟`;
+                }
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: '学习时长（分钟）',
+                font: {
+                  size: 14,
+                  family: 'Inter',
+                  weight: 'bold'
+                }
+              }
+            },
+            x: {
+              title: {
+                display: true,
+                text: '学习天数',
+                font: {
+                  size: 14,
+                  family: 'Inter',
+                  weight: 'bold'
+                }
+              }
+            }
+          }
+        }
+      });
+    };
+
+    // 5. 倒计时功能
+    const updateCountdown = () => {
+      // 设定结束时间（示例：当前时间+2天）
+      const endTime = new Date();
+      endTime.setDate(endTime.getDate() + 2);
+      endTime.setHours(23, 59, 59, 0);
+      
+      const now = new Date();
+      const diff = endTime - now;
+      
+      if (diff <= 0) {
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        return;
+      }
+      
+      // 计算天、时、分、秒
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      
+      // 更新DOM
+      document.getElementById('days').textContent = days.toString().padStart(2, '0');
+      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    };
+
+    // 6. FAQ 折叠功能
+    const initFAQ = () => {
+      const faqBtns = document.querySelectorAll('.faq-btn');
+      faqBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const content = btn.nextElementSibling;
+          const icon = btn.querySelector('i');
+          
+          // 切换当前FAQ
+          content.classList.toggle('hidden');
+          icon.classList.toggle('rotate-180');
+          
+          // 关闭其他FAQ
+          faqBtns.forEach(otherBtn => {
+            if (otherBtn !== btn) {
+              const otherContent = otherBtn.nextElementSibling;
+              const otherIcon = otherBtn.querySelector('i');
+              otherContent.classList.add('hidden');
+              otherIcon.classList.remove('rotate-180');
+            }
+          });
+        });
+      });
+    };
+
+    // 页面加载完成后初始化
+    document.addEventListener('DOMContentLoaded', () => {
+      initOverviewChart();
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+      initFAQ();
+    });
+  </script>
+</body>
+</html>
