@@ -876,29 +876,19 @@
     };   
 
     // 5. FAQ 折叠功能
-    const initFAQ = () => {
-      const faqBtns = document.querySelectorAll('.faq-btn');
-      faqBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const content = btn.nextElementSibling;
-          const icon = btn.querySelector('i');
-          
-          // 切换当前FAQ
-          content.classList.toggle('hidden');
-          icon.classList.toggle('rotate-180');
-          
-          // 关闭其他FAQ
-          faqBtns.forEach(otherBtn => {
-            if (otherBtn !== btn) {
-              const otherContent = otherBtn.nextElementSibling;
-              const otherIcon = otherBtn.querySelector('i');
-              otherContent.classList.add('hidden');
-              otherIcon.classList.remove('rotate-180');
-            }
-          });
-        });
-      });
-    };
+    // 折叠功能修复
+  document.querySelectorAll('.faq-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const content = button.nextElementSibling;
+      const icon = button.querySelector('i');
+      
+      // 切换内容显示/隐藏
+      content.classList.toggle('hidden');
+      
+      // 旋转图标
+      icon.classList.toggle('rotate-180');
+    });
+  });
 
     // 页面加载完成后初始化
     document.addEventListener('DOMContentLoaded', () => {
